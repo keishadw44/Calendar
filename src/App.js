@@ -1,11 +1,20 @@
-import logo from './logo.svg';
+
 import './App.css';
 
-import { Inject, ScheduleComponent, Day, Week, WorkWeek, Month, Year, Agenda, RecurrenceEditor, ViewsDirective, ViewDirective, TimelineViews, TimelineMonth } from '@syncfusion/ej2-react-schedule'
+import { 
+  Inject, ScheduleComponent, Day, Week, WorkWeek, Month, Year, Agenda, 
+  RecurrenceEditor, ViewsDirective, ViewDirective, TimelineViews, TimelineMonth,
+   DragAndDrop, Resize 
+  } from '@syncfusion/ej2-react-schedule'
+
+import { TreeViewComponent } from '@syncfusion/ej2-react-navigations';
 
 function App() {
+
+
 const EventSetting = [
 {
+
   Id: 1,
   Subject: 'Test',
   StartTime: new Date(2023, 1, 16, 10, 0),
@@ -17,30 +26,43 @@ const EventSetting = [
   IsReadonly: true,
   isBlock: true,
 },
-// {
-//   Id: 2, 
-//   Subject: 'Meeting',
-//   StartTime: new Date(2023, 1, 15, 10, 0),
-//   EndTime: new Date(2023, 1, 15, 12, 30),
-//   IsAllDay: false,
-//   Status: 'Completed',
-//   Priority: 'High'
-// }
+
 ];
   return (
-    <ScheduleComponent currentView='Month' newSetting={{dataSource: EventSetting}} selectDate={new Date(2023, 1, 1)}>
+ 
+    <ScheduleComponent currentView='Month' newSetting={{dataSource: EventSetting}} selectDate={new Date(2023, 1, 1)} allowDragAndDrop={false} allowResizing={false}>
       <ViewsDirective>
         <ViewDirective option='Week'></ViewDirective>
-        <ViewDirective option='Day'></ViewDirective>
-        <ViewDirective option='Month'></ViewDirective>
+        <ViewDirective option='Day' startHour='12:00' endHour='23:00'></ViewDirective>
+        <ViewDirective option='Month' showWeekNumber={true} showWeekend={true}></ViewDirective>
         <ViewDirective option='Year'></ViewDirective>
-        <ViewDirective option='TimelineDay'></ViewDirective>
+        <ViewDirective option='TimelineDay' ></ViewDirective>
         <ViewDirective option='TimelineMonth'></ViewDirective>
         
       </ViewsDirective>
-     <Inject services={[Day, Week, WorkWeek, Month, Year, Agenda, TimelineViews, TimelineMonth ]} />
+     <Inject services={[Day, Week, WorkWeek, Month, Year, Agenda, TimelineViews, TimelineMonth, DragAndDrop, Resize]} />
     </ScheduleComponent>
+    
+    
+
   );
-}
+  
+  
+  return (
+    <>
+    
+    <div className='sch-title' > Appointments </div>
+    <div className='sch-component'>
+    <ScheduleComponent>
+    </ScheduleComponent>
+    </div>
+
+    <div className="tree-title"> List </div>
+    <div className="tree-component">
+      <TreeViewComponent />
+      </div>
+    </>
+  );
+  }
 
 export default App;
