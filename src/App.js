@@ -38,11 +38,12 @@ const EventSetting = [
         <ViewDirective option='Year'></ViewDirective>
         <ViewDirective option='TimelineDay' ></ViewDirective>
         <ViewDirective option='TimelineMonth'></ViewDirective>
-        
+        <TreeViewComponent fields={{dataSource: treeViewData, id: 'id', text: 'Name'}} />
+
       </ViewsDirective>
      <Inject services={[Day, Week, WorkWeek, Month, Year, Agenda, TimelineViews, TimelineMonth, DragAndDrop, Resize]} />
     </ScheduleComponent>
-    
+
     
 
   );
