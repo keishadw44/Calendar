@@ -7,11 +7,11 @@ import {
    DragAndDrop, Resize 
   } from '@syncfusion/ej2-react-schedule'
 
-import { TreeViewComponent } from '@syncfusion/ej2-react-navigations';
+import { TreeViewComponent, treeViewData } from '@syncfusion/ej2-react-navigations';
 
 function App() {
 
-
+  <h1>Chronology</h1>
 const EventSetting = [
 {
 
@@ -46,23 +46,24 @@ const EventSetting = [
     
 
   );
+}
   
-  
-  return (
-    <>
+//   return (
+// <div>
     
-    <div className='sch-title' > Appointments </div>
-    <div className='sch-component'>
-    <ScheduleComponent>
-    </ScheduleComponent>
-    </div>
+//     <div className='sch-title' > Appointments </div>
+//     <div className='sch-component'>
+//     <ScheduleComponent>
+//     </ScheduleComponent>
+//     </div>
 
-    <div className="tree-title"> List </div>
-    <div className="tree-component">
-      <TreeViewComponent />
-      </div>
-    </>
-  );
-  }
+//     <div className="tree-title"> List </div>
+//     <div className="tree-component">
+//       <TreeViewComponent fields={{dataSource: treeViewData, id: 'id', text: 'Name'}} />
+//       </div>
+//     </div>  
+    
+//   );
+//   }
 
 export default App;
